@@ -13,12 +13,13 @@ let app = new Vue({
         error: false,
         errorMessage: '',
         albums: [],
+        filterAlbums: [],
         genres:['Pop', 'Rock', 'Metal', 'Jazz', 'All'],
         visible: '',
         direction: 'left',
-        filterAlbums: [],
     },
     methods:{
+        //Al click del mouse, fa apparire e scomparire il menu dei generi musicali
         appear: function(){
             if(this.visible === 'active'){
                 //reset
@@ -30,6 +31,7 @@ let app = new Vue({
                 this.direction= 'right';
             }
         },
+        //Filtra gli album che corrispondono al genere selezionato 
         filter: function(genre){
             this.filterAlbums = this.albums.filter(element => {
                 if(genre === 'All'){
@@ -39,21 +41,17 @@ let app = new Vue({
                     return element.genre === genre;
                 }
             });
-            //console.log(filterAlbums);
         }
-
     },
     mounted(){
         axios
         .get('https://flynn.boolean.careers/exercises/api/array/music')
         .then(response => {
-            console.log(response.data.response);
             const albums = response.data.response;
             this.albums = albums;
             this.filterAlbums = albums;
         })
         .catch(error => {
-            //console.log(error);
             const errorCode = error.response.status;
             const errorText = error.response.statusText;
             this.error = true;
