@@ -9,14 +9,14 @@ body {
     background: #1E2D3B;
     min-height: 100vh;
 }
-
+/**/
 .error{
     color: white;
     margin: 20px auto;
     font-size: 30px;
     text-align: center;
 }
-
+/**/
 .container {
     width: 1070px;
     height: 100%;
@@ -25,10 +25,10 @@ body {
 
 header {
     width: 100%;
-    height: 70px;
+    height: fit-content;
     background: rgb(46, 58, 70);
 }
-
+/**/
 .navbar{
     display: flex;
     align-items: center;
@@ -47,18 +47,24 @@ header {
     text-transform: capitalize;
     cursor: pointer;
     margin: 0 10px;
+    border-bottom: 2px solid #2e3a46;
 }
-i.fas{
+.btn:hover{
+    color: #1ed760;
+}
+.menu i.fas{
     margin-right: 15px;
 }
 .genres{
-    top: 20px;
     display: none;
+}
+.genres:hover{
+    border-bottom: 2px solid #1ed760;
 }
 .active{
     display: block;
 }
-
+/**/
 header img {
     height: 50px;
     margin-top: 10px;

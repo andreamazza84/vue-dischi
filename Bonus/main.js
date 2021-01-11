@@ -13,33 +13,47 @@ let app = new Vue({
         error: false,
         errorMessage: '',
         albums: [],
-        genres:['pop', 'rock', 'metal', 'jazz'],
+        genres:['Pop', 'Rock', 'Metal', 'Jazz', 'All'],
         visible: '',
         direction: 'left',
+        filterAlbums: [],
     },
     methods:{
         appear: function(){
             if(this.visible === 'active'){
+                //reset
                 this.visible = '';
                 this.direction= 'left';
             }
             else{
                 this.visible = 'active';
                 this.direction= 'right';
-
             }
+        },
+        filter: function(genre){
+            this.filterAlbums = this.albums.filter(element => {
+                if(genre === 'All'){
+                    return element;
+                }
+                else{
+                    return element.genre === genre;
+                }
+            });
+            //console.log(filterAlbums);
         }
+
     },
     mounted(){
         axios
         .get('https://flynn.boolean.careers/exercises/api/array/music')
         .then(response => {
-            //console.log(response.data.response);
+            console.log(response.data.response);
             const albums = response.data.response;
             this.albums = albums;
+            this.filterAlbums = albums;
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
             const errorCode = error.response.status;
             const errorText = error.response.statusText;
             this.error = true;

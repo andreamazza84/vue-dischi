@@ -17,15 +17,15 @@
                 <div class="container navbar">
                     <img src="img/logo.png" alt="logo" />
                     <ul class="menu">
-                        <li class="genres" v-for="(genere, index) in genres" :class="visible" @click="filter(index)">{{genere}}</li>
-                        <li @click="appear()"><i :class="'fas fa-chevron-'+ direction"></i> generi</li>
+                        <li class="genres" v-for="(genre, index) in genres" :class="visible" @click="filter(genre)">{{genre}}</li>
+                        <li class="btn" @click="appear()"><i :class="'fas fa-chevron-'+ direction"></i> genres</li>
                     </ul>
                 </div>
             </header>
     
-            <div v-if="error" class="error">{{errorMessage}}</div> -->
+            <div v-if="error" class="error">{{errorMessage}}</div> 
             <div v-else class="cds-container container">
-                <div class="cd" v-for="(album, index) in albums">
+                <div class="cd" v-for="(album, index) in filterAlbums">
                     <img :src="album.poster" alt="">
                     <h3>{{album.title}}</h3>
                     <span class="author">{{album.author}}</span>
