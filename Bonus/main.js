@@ -14,6 +14,21 @@ let app = new Vue({
         errorMessage: '',
         albums: [],
         genres:['pop', 'rock', 'metal', 'jazz'],
+        visible: '',
+        direction: 'left',
+    },
+    methods:{
+        appear: function(){
+            if(this.visible === 'active'){
+                this.visible = '';
+                this.direction= 'left';
+            }
+            else{
+                this.visible = 'active';
+                this.direction= 'right';
+
+            }
+        }
     },
     mounted(){
         axios
