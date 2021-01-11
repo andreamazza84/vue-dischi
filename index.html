@@ -18,12 +18,11 @@
         </header>
 
         <div class="cds-container container">
-            <!-- Disco ad esempio -->
-            <div class="cd">
-                <img src="https://upload.wikimedia.org/wikipedia/fi/d/d9/TenSummoner%27sTales.jpg" alt="">
-                <h3>Ten's Summoners Tales</h3>
-                <span class="author">Sting</span>
-                <span class="year">1993</span>
+            <div class="cd" v-for="(album, index) in albums">
+                <img :src="album.poster" alt="">
+                <h3>{{album.title}}}</h3>
+                <span class="author">{{album.author}}}</span>
+                <span class="year">{{album.year}}</span>
             </div>
         </div>
         
