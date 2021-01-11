@@ -13,6 +13,7 @@ let app = new Vue({
         error: false,
         errorMessage: '',
         albums: [],
+        genres:['pop', 'rock', 'metal', 'jazz'],
     },
     mounted(){
         axios
